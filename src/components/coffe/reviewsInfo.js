@@ -1,5 +1,5 @@
 import React from 'react';
-import './reviewsInfo.css';
+import './css/reviewsInfo.css';
 const ReviewsInfo = ({
   stateGood,
   stateNeutral,
@@ -7,15 +7,17 @@ const ReviewsInfo = ({
   countTotalFeedback,
   countPositiveFeedbackPercentage,
 }) => (
-  <div className="Review">
-    <span className="Review__goodValue">Good:{stateGood}</span>
-    <span className="Review__neutralValue">Neutral:{stateNeutral}</span>
+  <section className="Statistics">
+    <div className="Review">
+      <span className="Review__goodValue">Good:{stateGood}</span>
+      <span className="Review__neutralValue">Neutral:{stateNeutral}</span>
 
-    <span className="Review__badValue">Bad:{stateBad}</span>
-    <span className="Review__totalValue">Total:{countTotalFeedback}</span>
-    <span className="Review__feedbackValue">
-      Positive feedback:{countPositiveFeedbackPercentage}%
-    </span>
-  </div>
+      <span className="Review__badValue">Bad:{stateBad}</span>
+      <span className="Review__totalValue">Total:{countTotalFeedback}</span>
+      <span className="Review__feedbackValue">
+        Positive feedback:{countPositiveFeedbackPercentage}%
+      </span>
+    </div>
+  </section>
 );
 export default ReviewsInfo;
