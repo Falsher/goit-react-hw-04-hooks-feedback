@@ -3,7 +3,7 @@ import ConrolReview from './controlReview';
 import ReviewsInfo from './reviewsInfo';
 import Notification from './notificationReviews';
 class ReviewCoffe extends Component {
-  static defaulProps = {
+  static defaultProps = {
     initial: 0,
   };
   state = {
