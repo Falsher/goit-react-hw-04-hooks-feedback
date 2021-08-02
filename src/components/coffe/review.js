@@ -1,65 +1,44 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import ConrolReview from './controlReview';
 import ReviewsInfo from './reviewsInfo';
 import Notification from './notificationReviews';
-class ReviewCoffe extends Component {
-  static defaultProps = {
-    initial: 0,
+export default function ReviewCoffe() {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+  const handlIncrementGood = () => {
+    setGood(prevState => prevState + 1);
   };
-  state = {
-    good: this.props.initial,
-    neutral: this.props.initial,
-    bad: this.props.initial,
+  const handlIncrementNeutral = () => {
+    setNeutral(prevState => prevState + 1);
   };
-  handlIncrementGood = () => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-  handlIncrementNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-  handlIncrementBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
+  const handlIncrementBad = () => {
+    setBad(prevState => prevState + 1);
   };
 
-  render() {
-    const countTotalFeedback =
-      this.state.good + this.state.neutral + this.state.bad;
-    const countPositiveFeedbackPercentage = Math.round(
-      (this.state.good / countTotalFeedback) * 100,
-    );
+  const countTotalFeedback = good + neutral + bad;
+  const countPositiveFeedbackPercentage = Math.round(
+    (good / countTotalFeedback) * 100,
+  );
 
-    return (
-      <div className="Counter">
-        <ConrolReview
-          onIncrementGood={this.handlIncrementGood}
-          onIncrementNeutral={this.handlIncrementNeutral}
-          onIncrementBad={this.handlIncrementBad}
+  return (
+    <div className="Counter">
+      <ConrolReview
+        onIncrementGood={handlIncrementGood}
+        onIncrementNeutral={handlIncrementNeutral}
+        onIncrementBad={handlIncrementBad}
+      />
+      {countTotalFeedback > 0 ? (
+        <ReviewsInfo
+          stateGood={good}
+          stateNeutral={neutral}
+          stateBad={bad}
+          countTotalFeedback={countTotalFeedback}
+          countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
         />
-        {countTotalFeedback > 0 ? (
-          <ReviewsInfo
-            stateGood={this.state.good}
-            stateNeutral={this.state.neutral}
-            stateBad={this.state.bad}
-            countTotalFeedback={countTotalFeedback}
-            countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
-          />
-        ) : (
-          <Notification message="No feedback given" />
-        )}
-      </div>
-    );
-  }
+      ) : (
+        <Notification message="No feedback given" />
+      )}
+    </div>
+  );
 }
-export default ReviewCoffe;
