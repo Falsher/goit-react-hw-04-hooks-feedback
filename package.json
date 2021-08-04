@@ -1,5 +1,5 @@
 {
-  "name": "goit-react-hw-04-feedback",
+  "name": "goit-react-hw-04-hooks-feedback",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://Falsher.github.io/goit-react-hw-04-feedback",
+  "homepage": "https://Falsher.github.io/goit-react-hw-04-hooks-feedback",
   "devDependencies": {
     "eslint": "^7.31.0",
     "husky": "^7.0.1",
